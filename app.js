@@ -11,3 +11,21 @@ var budgetController = (function() {
         }
     }
 })();
+
+var uiController = (function() {
+
+    // some code
+
+})();
+
+var controller = (function() {
+
+    return {
+        anotherF: function() {
+            console.log(budgetController.publicTest(10)),
+            console.log(budgetController.publicTest(50)),
+            console.log(budgetController.publicTest(60))
+        }
+    }
+
+})(budgetController, uiController);
