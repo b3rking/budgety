@@ -1,31 +1,22 @@
+// budget controller
 var budgetController = (function() {
-    var x = 5;
+    
+    // some code
 
-    function add(x) {
-        return x + x;
-    }
-
-    return {
-        publicTest: function (b) {
-            return add(b);
-        }
-    }
 })();
 
+// ui controller
 var uiController = (function() {
 
     // some code
 
 })();
 
+// global app controller
 var controller = (function() {
 
-    return {
-        anotherF: function() {
-            console.log(budgetController.publicTest(10)),
-            console.log(budgetController.publicTest(50)),
-            console.log(budgetController.publicTest(60))
-        }
-    }
+    document.querySelector('.add__btn').addEventListener('click', function() {
+        
+    })
 
 })(budgetController, uiController);
