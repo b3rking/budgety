@@ -27,13 +27,16 @@ var budgetController = (function() {
     return {
         addItem: function(type, id, description, value) {
             var newItem;
+
+            // create new id
             var id = data.allItems[type].length + 1;
+            // create a item
             if (type === 'exp') {
                 newItem = new Expense(id, description, value);
             } else if (type === 'inc') {
                 newItem = new Income(id, description, value);
             }
-
+            // add the item in the datastructure
             data.allItems[type].push(newItem);
 
             return newItem;
@@ -79,11 +82,11 @@ var controller = (function() {
     }
     
     var ctrlAddItem = function() {
-
+        var inputs, newItem;
         // 1. get the field input data
-        var inputs = uiController.getInput();
+        inputs = uiController.getInput();
         // 2. add the item to the budget controller
-        console.log(budgetController.addItem(inputs.type, 1, inputs.descr, inputs.value));
+        newItem = budgetController.addItem(inputs.type, 1, inputs.descr, inputs.value);
         // 3. add the item to the ui
         // 4. calculate the budget
         // 5. display the budget to the ui
