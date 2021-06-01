@@ -125,12 +125,13 @@ var controller = (function() {
         // 1. get the field input data
         inputs = uiController.getInput();
         // 2. add the item to the budget controller
-        newItem = budgetController.addItem(inputs.type, 1, inputs.descr, inputs.value);
-        // 3. add the item to the ui
-        uiController.addListItem(newItem,inputs.type);
-        uiController.clearFields();
-        // 4. calculate and update the budget
-
+        if (inputs.descr !== "" && !isNaN(inputs.value && inputs.value > 0)) {
+            newItem = budgetController.addItem(inputs.type, 1, inputs.descr, inputs.value);
+            // 3. add the item to the ui
+            uiController.addListItem(newItem,inputs.type);
+            uiController.clearFields();
+            // 4. calculate and update the budget
+        }
     }
 
     return {
