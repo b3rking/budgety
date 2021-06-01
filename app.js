@@ -40,7 +40,13 @@ var budgetController = (function() {
             data.allItems[type].push(newItem);
 
             return newItem;
-        },data
+        },
+        calculateBudget: function() {
+            // calculate total income and expences
+            // calculate the budget: income - expences
+            // calculate the percentage of income that we spent
+        },
+        data
     };
 
 })();
