@@ -21,7 +21,23 @@ var budgetController = (function() {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget: 0,
+        percetange: -1 // -1 means there's no value!
+    }
+
+    var calculateTotal = function(type) {
+        var total = 0;
+        data.allItems[type].forEach(function(current) {
+            total += data.allItems["inc"].inc[current];
+        });
+        data.totals[type] = total;
+    }
+
+    var getBudget = function() {
+        return {
+            budget: data.budget
+        };
     }
 
     return {
@@ -43,8 +59,12 @@ var budgetController = (function() {
         },
         calculateBudget: function() {
             // calculate total income and expences
+            calculateTotal("exp");
+            calculateTotal("inc");
             // calculate the budget: income - expences
+            data.budget = data.totals.inc - data.totals.exp;
             // calculate the percentage of income that we spent
+            data.percetange = Math.round(data.totals.exp / data.totals.inc) * 100;
         },
         data
     };
@@ -122,7 +142,9 @@ var controller = (function() {
 
     var updateBudget = function() {
         // calculate the budget
+        budgetController.calculateBudget();
         // return the budget
+        var budget = budgetController.getBudget();
         // display the budget to the ui
     }
     
