@@ -36,7 +36,10 @@ var budgetController = (function() {
 
     var getBudget = function() {
         return {
-            budget: data.budget
+            budget: data.budget,
+            totalInc: data.totals.inc,
+            totalExp: data.totals.exp,
+            percentage: data.percetange
         };
     }
 
@@ -64,7 +67,7 @@ var budgetController = (function() {
             // calculate the budget: income - expences
             data.budget = data.totals.inc - data.totals.exp;
             // calculate the percentage of income that we spent
-            data.percetange = Math.round(data.totals.exp / data.totals.inc) * 100;
+            data.percetange = Math.round((data.totals.exp / data.totals.inc) * 100);
         },
         data
     };
@@ -146,6 +149,7 @@ var controller = (function() {
         // return the budget
         var budget = budgetController.getBudget();
         // display the budget to the ui
+        console.log(budget);
     }
     
     var ctrlAddItem = function() {
