@@ -66,7 +66,9 @@ var budgetController = (function() {
             // calculate the budget: income - expences
             data.budget = data.totals.inc - data.totals.exp;
             // calculate the percentage of income that we spent
-            data.percetange = Math.round((data.totals.exp / data.totals.inc) * 100);
+            if(data.totals.inc > 0) {
+            data.percetange = Math.round((data.totals.exp / data.totals.inc) * 100); }
+            else { data.percetange = -1; }
         },
         data
     };
@@ -122,6 +124,9 @@ var uiController = (function() {
             });
 
             fieldArr[0].focus();
+        },
+        displayBudget: function(obj) {
+            
         }
     };
 
